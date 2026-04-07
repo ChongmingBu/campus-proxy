@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>校园网一键查询</title><标题>校园网一键查询</标题>
+  <style><样式>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{padding:20px;max-width:600px;margin:0 auto;font-family:system-ui}主体{内边距:20像素;最大宽度:600像素;边距:0 居中;字体系列:系统界面}
+    input,button{width:100%;padding:12px;margin:10px 0;border-radius:8px;border:1px solid #ddd}输入,按钮{宽度:100%;内边距:12px;外边距:10px 0;圆角半径:8px;边框:1px 实线#ddd}
+    button{background:#007bff;color:white;border:none;font-weight:bold}
+    .result{margin-top:20px;padding:15px;background:#f8f9fa;border-radius:8px;white-space:pre-wrap}
+  </style>
+</head>
+<body>
+  <h2>校园网一键查询</h2>
+  <input type="text" id="url" placeholder="输入要查询的地址">
+  <button onclick="query()">一键查询</button>
+  <div class="result" id="result"></div>
+
+  <script>
+    async function query() {
+      const url = document.getElementById('url').value;
+      const res = await fetch(`/proxy?url=${encodeURIComponent(url)}`);
+      const data = await res.text();
+      document.getElementById('result').innerText = data;
+    }
+  </script>
+</body>
+</html>
+
